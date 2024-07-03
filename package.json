@@ -4,7 +4,8 @@
   "description": "rns with using socket.io and node & express",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "author": "Divakara",
   "license": "ISC",
@@ -12,5 +13,8 @@
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
