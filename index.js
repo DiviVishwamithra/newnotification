@@ -91,7 +91,7 @@ const io = socketIo(server, {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 
 app.use(session({
@@ -135,10 +135,12 @@ io.on('connection', (socket) => {
 app.post('/notify/:userId', (req, res) => {
   const userId = req.params.userId;
   const message = req.body.message;
+  const name = req.body.name;
+  const msg = `Hey ${name}, ${message}`
 
   const userSocketId = users[userId];
   if (userSocketId) {
-    io.to(userSocketId).emit('notification', message);
+    io.to(userSocketId).emit('notification', msg);
     res.send(`Notification sent to user ${userId}`);
   } else {
     res.status(404).send('User not connected');
